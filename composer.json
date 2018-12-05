@@ -1,0 +1,26 @@
+{
+  "name": "destebang/tdd-by-example",
+  "description": "tdd by example book",
+  "type": "project",
+  "require-dev": {
+    "phpunit/phpunit": "^7.4"
+  },
+  "autoload": {
+    "psr-4": {
+      "TddByExample\\": [
+        "src"
+      ]
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "TddByExample\\Tests\\": "tests"
+    }
+  },
+  "authors": [
+    {
+      "name": "Daniel Esteban",
+      "email": "danielestebangonzalez83@gmail.com"
+    }
+  ]
+}
