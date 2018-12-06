@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TddByExample;
 
-class Franc
+class Franc extends Money
 {
     /**
      * @var float
