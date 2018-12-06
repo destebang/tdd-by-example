@@ -6,11 +6,6 @@ namespace TddByExample;
 
 class Dollar extends Money
 {
-    /**
-     * @var float
-     */
-    private $amount;
-
     public function __construct(float $amount)
     {
         $this->amount = $amount;

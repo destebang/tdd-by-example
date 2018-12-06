@@ -6,5 +6,5 @@ namespace TddByExample;
 
 abstract class Money
 {
-
+    protected $amount;
 }
