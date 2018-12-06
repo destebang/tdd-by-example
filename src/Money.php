@@ -8,9 +8,19 @@ abstract class Money
 {
     protected $amount;
 
-    public function __construct(float $amount)
+    public function __construct(int $amount)
     {
         $this->amount = $amount;
+    }
+
+    public static function dollar(int $amount): Money
+    {
+        return new Dollar($amount);
+    }
+
+    public static function franc(int $amount): Money
+    {
+        return new Franc($amount);
     }
 
     public function equals(Money $money): bool
@@ -18,4 +28,6 @@ abstract class Money
         return $this->amount === $money->amount
             && get_class($this) === get_class($money);
     }
+
+    abstract public function times(int $multiplier): Money;
 }

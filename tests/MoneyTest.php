@@ -7,12 +7,13 @@ namespace TddByExample\Tests;
 use PHPUnit\Framework\TestCase;
 use TddByExample\Dollar;
 use TddByExample\Franc;
+use TddByExample\Money;
 
 class MoneyTest extends TestCase
 {
     public function testMultiplication(): void
     {
-        $fiveDollars = new Dollar(5);
+        $fiveDollars = Money::dollar(5);
         $this->assertEquals(new Dollar(10), $fiveDollars->times(2));
         $this->assertEquals(new Dollar(15), $fiveDollars->times(3));
     }
@@ -30,7 +31,7 @@ class MoneyTest extends TestCase
 
     public function testFrancMultiplication(): void
     {
-        $fiveFrancs = new Franc(5);
+        $fiveFrancs = Money::franc(5);
         $this->assertEquals(new Franc(10), $fiveFrancs->times(2));
         $this->assertEquals(new Franc(15), $fiveFrancs->times(3));
     }
