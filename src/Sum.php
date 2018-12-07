@@ -7,16 +7,16 @@ namespace TddByExample;
 class Sum implements Expression
 {
     /**
-     * @var Money
+     * @var Expression
      */
     private $augend;
 
     /**
-     * @var Money
+     * @var Expression
      */
     private $addend;
 
-    public function __construct(Money $augend, Money $auddend)
+    public function __construct(Expression $augend, Expression $auddend)
     {
         $this->augend = $augend;
         $this->addend = $auddend;
@@ -24,18 +24,23 @@ class Sum implements Expression
 
     public function reduce(Bank $bank, string $to): Money
     {
-        $amount = $this->augend->amount() + $this->addend->amount();
+        $amount = $this->augend->reduce($bank, $to)->amount() + $this->addend->reduce($bank, $to)->amount();
 
         return new Money($amount, $to);
     }
 
-    public function augend(): Money
+    public function augend(): Expression
     {
         return $this->augend;
     }
 
-    public function addend(): Money
+    public function addend(): Expression
     {
         return $this->addend;
+    }
+
+    public function plus(Expression $addend): Expression
+    {
+        return null;
     }
 }

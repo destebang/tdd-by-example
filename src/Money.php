@@ -36,14 +36,14 @@ class Money implements Expression
         return $this->currency;
     }
 
-    public function times(int $multiplier): Money
+    public function times(int $multiplier): Expression
     {
         return new Money($this->amount * $multiplier, $this->currency);
     }
 
-    public function plus(Money $added): Expression
+    public function plus(Expression $addend): Expression
     {
-        return new Sum($this, $added);
+        return new Sum($this, $addend);
     }
 
     public function amount(): int
