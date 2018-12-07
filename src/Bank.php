@@ -6,8 +6,12 @@ namespace TddByExample;
 
 class Bank
 {
-    public function reduce(Expression $source, string $to)
+    /**
+     * @param Expression|Sum $source
+     * @param string $to
+     */
+    public function reduce(Expression $source, string $to): Money
     {
-        return Money::dollar(10);
+        return $source->reduce($to);
     }
 }

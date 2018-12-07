@@ -6,8 +6,8 @@ namespace TddByExample\Tests;
 
 use PHPUnit\Framework\TestCase;
 use TddByExample\Bank;
-use TddByExample\Franc;
 use TddByExample\Money;
+use TddByExample\Sum;
 
 class MoneyTest extends TestCase
 {
@@ -31,12 +31,36 @@ class MoneyTest extends TestCase
         $this->assertEquals("CHF", Money::franc(1)->currency());
     }
 
-    public function testSimpleAdition(): void
+    public function testSimpleAddition(): void
     {
         $five = Money::dollar(5);
         $sum = $five->plus($five);
         $bank = new Bank();
         $reduced = $bank->reduce($sum, "USD");
         $this->assertEquals(Money::dollar(10), $reduced);
+    }
+
+    public function testPlusReturnsSum(): void
+    {
+        $five = Money::dollar(5);
+        /** @var Sum $expression **/
+        $expression = $five->plus($five);
+        $this->assertEquals($five, $expression->augend());
+        $this->assertEquals($five, $expression->addend());
+    }
+
+    public function testReduceSum(): void
+    {
+        $sum = new Sum(Money::dollar(3), Money::dollar(4));
+        $bank = new Bank();
+        $result = $bank->reduce($sum, "USD");
+        $this->assertEquals(Money::dollar(7), $result);
+    }
+
+    public function testReduceMoney(): void
+    {
+        $bank = new Bank();
+        $result = $bank->reduce(Money::dollar(1), "USD");
+        $this->assertEquals(Money::dollar(1), $result);
     }
 }
