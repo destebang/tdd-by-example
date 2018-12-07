@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace TddByExample;
 
-class Money
+class Money implements Expression
 {
     protected $amount;
     protected $currency;
@@ -39,6 +39,11 @@ class Money
     public function times(int $multiplier): Money
     {
         return new Money($this->amount * $multiplier, $this->currency);
+    }
+
+    public function plus(Money $added): Money
+    {
+        return new self($this->amount + $added->amount, $this->currency);
     }
 }
 
